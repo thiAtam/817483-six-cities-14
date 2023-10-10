@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Gor Sayadyan](https://up.htmlacademy.ru/react/14/user/817483).
-* Наставник: `Неизвестно`.
+* Наставник: [Yulia Volkova](https://htmlacademy.ru/profile/id423707).
 
 ---
 

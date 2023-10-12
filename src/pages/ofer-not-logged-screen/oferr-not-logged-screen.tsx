@@ -1,4 +1,4 @@
-function offerPage(): JSX.Element {
+function offerNotLoggedPage(): JSX.Element {
   return (
     <div className="page">
       <header className="header">
@@ -15,13 +15,7 @@ function offerPage(): JSX.Element {
                   <a className="header__nav-link header__nav-link--profile" href="#">
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                    <span className="header__favorite-count">3</span>
-                  </a>
-                </li>
-                <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">
-                    <span className="header__signout">Sign out</span>
+                    <span className="header__login">Sign in</span>
                   </a>
                 </li>
               </ul>
@@ -93,7 +87,7 @@ function offerPage(): JSX.Element {
                 <span className="offer__price-text">&nbsp;night</span>
               </div>
               <div className="offer__inside">
-                <h2 className="offer__inside-title">What's inside</h2>
+                <h2 className='offer__inside-title'>What&apos;s inside</h2>
                 <ul className="offer__inside-list">
                   <li className="offer__inside-item">
                     Wi-Fi
@@ -336,4 +330,4 @@ function offerPage(): JSX.Element {
   );
 }
 
-export default offerPage;
+export default offerNotLoggedPage;

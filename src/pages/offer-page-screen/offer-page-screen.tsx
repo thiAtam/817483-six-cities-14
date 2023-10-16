@@ -1,35 +1,9 @@
+import HeaderPage from '../../components/app/header';
+
 function offerPage(): JSX.Element {
   return (
     <div className="page">
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <div className="header__left">
-              <a className="header__logo-link" href="main.html">
-                <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
-              </a>
-            </div>
-            <nav className="header__nav">
-              <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                    <span className="header__favorite-count">3</span>
-                  </a>
-                </li>
-                <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">
-                    <span className="header__signout">Sign out</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </header>
-
+      <HeaderPage/>
       <main className="page__main page__main--offer">
         <section className="offer">
           <div className="offer__gallery-container container">
@@ -93,7 +67,7 @@ function offerPage(): JSX.Element {
                 <span className="offer__price-text">&nbsp;night</span>
               </div>
               <div className="offer__inside">
-                <h2 className="offer__inside-title">What's inside</h2>
+                <h2 className="offer__inside-title">What&apos;s inside</h2>
                 <ul className="offer__inside-list">
                   <li className="offer__inside-item">
                     Wi-Fi
@@ -218,7 +192,7 @@ function offerPage(): JSX.Element {
                     <p className="reviews__help">
                       To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
                     </p>
-                    <button className="reviews__submit form__submit button" type="submit" disabled="">Submit</button>
+                    <button className="reviews__submit form__submit button" type="submit" disabled>Submit</button>
                   </div>
                 </form>
               </section>

@@ -1,4 +1,4 @@
-import OneCardView from '../components/app/one-card-view';
+import OfferCard from '../components/app/offerCard';
 import HeaderPage from '../components/app/header';
 
 type MainPageProps = {
@@ -68,7 +68,7 @@ function toMainPage({countOffers}: MainPageProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {Array.from({length: countOffers}, (_: number, index: number) => <OneCardView key={index}/>)}
+                {Array.from({length: countOffers}, (_: number, index: number) => <OfferCard key={index}/>)}
               </div>
             </section>
             <div className="cities__right-section">

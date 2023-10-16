@@ -1,4 +1,4 @@
-function OneCardView(): JSX.Element {
+function OfferCard(): JSX.Element {
   return (
     <article className="cities__card place-card">
       <div className="cities__image-wrapper place-card__image-wrapper">
@@ -30,4 +30,4 @@ function OneCardView(): JSX.Element {
   );
 }
 
-export default OneCardView;
+export default OfferCard;

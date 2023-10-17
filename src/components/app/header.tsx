@@ -1,4 +1,4 @@
-function HeaderPage(): JSX.Element {
+function Header(): JSX.Element {
   return (
     <header className="header">
       <div className="container">
@@ -31,4 +31,4 @@ function HeaderPage(): JSX.Element {
   );
 }
 
-export default HeaderPage;
+export default Header;

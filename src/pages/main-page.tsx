@@ -1,5 +1,5 @@
 import OfferCard from '../components/app/offerCard';
-import HeaderPage from '../components/app/header';
+import Header from '../components/app/header';
 
 type MainPageProps = {
   countOffers: number;
@@ -8,7 +8,7 @@ type MainPageProps = {
 function toMainPage({countOffers}: MainPageProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
-      <HeaderPage/>
+      <Header/>
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">

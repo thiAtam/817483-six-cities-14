@@ -1,9 +1,9 @@
-import HeaderPage from '../../components/app/header';
+import Header from '../../components/app/header';
 
 function offerNotLoggedPage(): JSX.Element {
   return (
     <div className="page">
-      <HeaderPage/>
+      <Header/>
       <main className="page__main page__main--offer">
         <section className="offer">
           <div className="offer__gallery-container container">

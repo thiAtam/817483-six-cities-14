@@ -1,4 +1,4 @@
-import Header from '../../components/app/header';
+import Header from '../../components/header/header';
 
 function offerPage(): JSX.Element {
   return (

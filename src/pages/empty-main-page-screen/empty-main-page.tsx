@@ -1,4 +1,4 @@
-import HeaderPage from '../../components/app/header';
+import HeaderPage from '../../components/header/header';
 
 function emptyMainPage(): JSX.Element {
   return (

@@ -1,5 +1,5 @@
-import OfferCard from '../components/app/offerCard';
-import Header from '../components/app/header';
+import OfferCard from '../components/offer-card/offerCard';
+import Header from '../components/header/header';
 
 type MainPageProps = {
   countOffers: number;

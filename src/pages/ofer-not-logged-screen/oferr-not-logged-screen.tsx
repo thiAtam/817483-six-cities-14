@@ -1,6 +1,6 @@
 import Header from '../../components/header/header';
 
-function offerNotLoggedPage(): JSX.Element {
+function OfferNotLoggedPage(): JSX.Element {
   return (
     <div className="page">
       <Header/>
@@ -310,4 +310,4 @@ function offerNotLoggedPage(): JSX.Element {
   );
 }
 
-export default offerNotLoggedPage;
+export default OfferNotLoggedPage;

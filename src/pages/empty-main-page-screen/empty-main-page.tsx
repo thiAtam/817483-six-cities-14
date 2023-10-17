@@ -1,6 +1,6 @@
 import HeaderPage from '../../components/header/header';
 
-function emptyMainPage(): JSX.Element {
+function EmptyMainPage(): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <HeaderPage/>
@@ -58,4 +58,4 @@ function emptyMainPage(): JSX.Element {
   );
 }
 
-export default emptyMainPage;
+export default EmptyMainPage;

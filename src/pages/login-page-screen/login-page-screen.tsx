@@ -1,4 +1,4 @@
-function loginPageScreen(): JSX.Element {
+function LoginPageScreen(): JSX.Element {
   return (
     <div className="page page--gray page--login">
       <header className="header">
@@ -42,4 +42,4 @@ function loginPageScreen(): JSX.Element {
   );
 }
 
-export default loginPageScreen;
+export default LoginPageScreen;

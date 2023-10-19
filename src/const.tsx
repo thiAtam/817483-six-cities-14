@@ -1,4 +1,4 @@
-const COUNT_OFFERS = 5;
+const COUNT_OFFERS: number = 5;
 const LOCATIONS_NAME: string[] = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 const LOCATIONS_OPTION: string[] = [
   'Popular',

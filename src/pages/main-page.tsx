@@ -7,9 +7,10 @@ type LocationCities = string[]
 type MainPageProps = {
   countOffers: number;
   locationsName: LocationCities;
+  locationsOption: string[];
 }
 
-function MainPage({countOffers, locationsName}: MainPageProps): JSX.Element {
+function MainPage({countOffers, locationsName, locationsOption}: MainPageProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Header/>
@@ -34,10 +35,14 @@ function MainPage({countOffers, locationsName}: MainPageProps): JSX.Element {
                   </svg>
                 </span>
                 <ul className="places__options places__options--custom places__options--opened">
-                  <li className="places__option places__option--active" tabIndex={Number('0')}>Popular</li>
-                  <li className="places__option" tabIndex={Number('0')}>Price: low to high</li>
-                  <li className="places__option" tabIndex={Number('0')}>Price: high to low</li>
-                  <li className="places__option" tabIndex={Number('0')}>Top rated first</li>
+                  {locationsOption.map((option) => (
+                    <li key={option}
+                      className="places__option places__option--active"
+                      tabIndex={Number('0')}
+                    >
+                      {option}
+                    </li>
+                  ))}
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">

@@ -3,11 +3,12 @@ import MainPage from '../../pages/main-page';
 
 type ApplicationProps = {
   countOffers: number;
+  locationsName: string[];
 }
 
-function App({countOffers}: ApplicationProps): JSX.Element {
+function App({countOffers, locationsName}: ApplicationProps): JSX.Element {
   return (
-    <MainPage countOffers={countOffers}/>
+    <MainPage countOffers={countOffers} locationsName={locationsName}/>
   );
 }
 

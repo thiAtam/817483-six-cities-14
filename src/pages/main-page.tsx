@@ -1,11 +1,15 @@
 import OfferCard from '../components/offer-card/offerCard';
 import Header from '../components/header/header';
+import Location from '../components/locations/locations-container';
+
+type LocationCities = string[]
 
 type MainPageProps = {
   countOffers: number;
+  locationsName: LocationCities;
 }
 
-function MainPage({countOffers}: MainPageProps): JSX.Element {
+function MainPage({countOffers, locationsName}: MainPageProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Header/>
@@ -13,38 +17,7 @@ function MainPage({countOffers}: MainPageProps): JSX.Element {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
-            </ul>
+            <Location locationsName={locationsName}/>
           </section>
         </div>
         <div className="cities">

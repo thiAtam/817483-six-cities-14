@@ -1,39 +1,18 @@
-function Location(): JSX.Element {
+type LocationProps = {
+  locationsName: string[];
+};
+
+function Location({locationsName}: LocationProps): JSX.Element {
   return (
-    <section className="locations container">
-      <ul className="locations__list tabs__list">
-        <li className="locations__item">
+    <ul className="locations__list tabs__list">
+      {locationsName.map((location) => (
+        <li key={location} className="locations__item">
           <a className="locations__item-link tabs__item" href="#">
-            <span>Paris</span>
+            <span>{location}</span>
           </a>
         </li>
-        <li className="locations__item">
-          <a className="locations__item-link tabs__item" href="#">
-            <span>Cologne</span>
-          </a>
-        </li>
-        <li className="locations__item">
-          <a className="locations__item-link tabs__item" href="#">
-            <span>Brussels</span>
-          </a>
-        </li>
-        <li className="locations__item">
-          <a className="locations__item-link tabs__item tabs__item--active">
-            <span>Amsterdam</span>
-          </a>
-        </li>
-        <li className="locations__item">
-          <a className="locations__item-link tabs__item" href="#">
-            <span>Hamburg</span>
-          </a>
-        </li>
-        <li className="locations__item">
-          <a className="locations__item-link tabs__item" href="#">
-            <span>Dusseldorf</span>
-          </a>
-        </li>
-      </ul>
-    </section>
+      ))}
+    </ul>
   );
 }
 

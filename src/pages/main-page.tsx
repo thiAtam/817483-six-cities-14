@@ -46,7 +46,7 @@ function MainPage({countOffers, locationsName, locationsOption}: MainPageProps):
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {Array.from({length: countOffers}, (_: number, index: number) => <OfferCard key={index}/>)}
+                {Array.from({length: countOffers}, (_: number, count: number) => <OfferCard key={count}/>)}
               </div>
             </section>
             <div className="cities__right-section">

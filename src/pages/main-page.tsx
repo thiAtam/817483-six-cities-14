@@ -1,6 +1,7 @@
 import OfferCard from '../components/offer-card/offerCard';
 import Header from '../components/header/header';
 import Location from '../components/locations/locations-container';
+import offers from '../mock-data/offers';
 
 type LocationCities = string[]
 
@@ -46,7 +47,9 @@ function MainPage({countOffers, locationsName, locationsOption}: MainPageProps):
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {Array.from({length: countOffers}, (_: number, count: number) => <OfferCard key={count}/>)}
+                {Array.from({length: countOffers}, (_: string, count: number) =>
+                  (<OfferCard key={count} price={offers.price} images={offers.images} rating={offers.rating} isPremium={offers.isPremium} title={offers.title} type={offers.type}/>
+                  ))}
               </div>
             </section>
             <div className="cities__right-section">

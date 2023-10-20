@@ -17,7 +17,7 @@ type OffersType = {
     name: string;
   };
   id: number;
-  images: string[];
+  images: string;
   isFavorite: boolean;
   isPremium: boolean;
   location: {
@@ -54,11 +54,9 @@ const offers: OffersType = {
     'name': 'Angelina'
   },
   'id': 1,
-  'images': [
-    'img/1.png'
-  ],
+  'images': './img/studio-01.jpg',
   'isFavorite': true,
-  'isPremium': false,
+  'isPremium': true,
   'location': {
     'latitude': 52.35514938496378,
     'longitude': 4.673877537499948,
@@ -67,7 +65,7 @@ const offers: OffersType = {
   'maxAdults': 4,
   'previewImage': 'img/1.png',
   'price': 120,
-  'rating': 4.8,
+  'rating': 46.8,
   'title': 'Beautiful & luxurious studio at great location',
   'type': 'apartment'
 };

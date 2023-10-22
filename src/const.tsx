@@ -14,10 +14,17 @@ enum APP_ROUTE {
   Root = '/'
 }
 
+enum AUTHORIZATION_STATUS {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN'
+}
+
 export {
   COUNT_OFFERS,
   LOCATIONS_NAME,
   LOCATIONS_OPTION,
-  APP_ROUTE
+  APP_ROUTE,
+  AUTHORIZATION_STATUS
 };
 

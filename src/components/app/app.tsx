@@ -4,6 +4,7 @@ import MainPage from '../../pages/main-page';
 import FavoritesPage from '../../pages/favorites-screen/favorites-page-screen';
 import LoginPage from '../../pages/login-page-screen/login-page-screen';
 import OfferPage from '../../pages/offer-page-screen/offer-page-screen';
+import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 
 
 type ApplicationProps = {
@@ -20,6 +21,7 @@ function App({countOffers, locationsName, locationsOption}: ApplicationProps): J
         <Route path={APP_ROUTE.Login} element={<LoginPage />} />
         <Route path={APP_ROUTE.Favorites} element={<FavoritesPage />} />
         <Route path={APP_ROUTE.Offer} element={<OfferPage />} />
+        <Route path='*' element={<NotFoundScreen />} />
       </Routes>
     </BrowserRouter>
   );

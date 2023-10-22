@@ -1,4 +1,4 @@
-import OfferCard from '../components/offer-card/offerCard';
+import OfferCard from '../components/offer-card/offer-card';
 import Header from '../components/header/header';
 import Location from '../components/locations/locations-container';
 import offers from '../mock-data/offers';

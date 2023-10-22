@@ -1,6 +1,7 @@
 import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
-import OfferCard from '../../components/offer-card/offerCard';
+// import OfferCard from '../../components/offer-card/offer-card';
+
 
 function FavoritesPage(): JSX.Element {
   return (
@@ -20,8 +21,8 @@ function FavoritesPage(): JSX.Element {
                   </div>
                 </div>
                 <div className="favorites__places">
-                  <OfferCard/>
-                  <OfferCard/>
+                  {/* <OfferCard/> */}
+                  {/* <OfferCard/> */}
                 </div>
               </li>
 

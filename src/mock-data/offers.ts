@@ -1,4 +1,4 @@
-type OffersType = {
+type offerType = {
   bedrooms: number;
   city: {
     location: {
@@ -33,7 +33,7 @@ type OffersType = {
   type: string;
 }
 
-const offers: OffersType = {
+const offer: offerType = {
   'bedrooms': 3,
   'city': {
     'location': {
@@ -70,4 +70,4 @@ const offers: OffersType = {
   'type': 'apartment'
 };
 
-export default offers;
+export default offer;

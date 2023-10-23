@@ -17,7 +17,7 @@ type offerType = {
     name: string;
   };
   id: number;
-  images: string;
+  images: string[];
   isFavorite: boolean;
   isPremium: boolean;
   location: {
@@ -45,16 +45,21 @@ const offer: offerType = {
   },
   'description': 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
   'goods': [
-    'Heating'
+    'Heating',
+    'Heals',
+    'Bros',
+    'Dress',
+    'Yo',
+    'Yoo'
   ],
   'host': {
-    'avatarUrl': 'img/1.png',
+    'avatarUrl': 'img/avatar-angelina.jpg',
     'id': 3,
     'isPro': true,
     'name': 'Angelina'
   },
   'id': 1,
-  'images': './img/studio-01.jpg',
+  'images': ['./img/studio-01.jpg', './img/apartment-01.jpg', './img/apartment-02.jpg', './img/apartment-03.jpg'],
   'isFavorite': true,
   'isPremium': true,
   'location': {
@@ -63,9 +68,9 @@ const offer: offerType = {
     'zoom': 8
   },
   'maxAdults': 4,
-  'previewImage': 'img/1.png',
+  'previewImage': './img/studio-01.jpg',
   'price': 120,
-  'rating': 46.8,
+  'rating': 4.8,
   'title': 'Beautiful & luxurious studio at great location',
   'type': 'apartment'
 };

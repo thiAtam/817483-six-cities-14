@@ -2,6 +2,7 @@ import OfferCard from '../components/offer-card/offer-card';
 import Header from '../components/header/header';
 import Location from '../components/locations/locations-container';
 import offers from '../mock-data/offers';
+import { Helmet } from 'react-helmet-async';
 
 type LocationCities = string[]
 
@@ -9,11 +10,15 @@ type MainPageProps = {
   countOffers: number;
   locationsName: LocationCities;
   locationsOption: string[];
+  previewImage: string;
 }
 
-function MainPage({countOffers, locationsName, locationsOption}: MainPageProps): JSX.Element {
+function MainPage({countOffers, locationsName, locationsOption, previewImage}: MainPageProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
+      <Helmet>
+        <title>6 cities. Choose Your place!</title>
+      </Helmet>
       <Header/>
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
@@ -48,7 +53,7 @@ function MainPage({countOffers, locationsName, locationsOption}: MainPageProps):
               </form>
               <div className="cities__places-list places__list tabs__content">
                 {Array.from({length: countOffers}, (_: string, count: number) =>
-                  (<OfferCard key={count} price={offers.price} images={offers.images} rating={offers.rating} isPremium={offers.isPremium} title={offers.title} type={offers.type}/>
+                  (<OfferCard key={count} price={offers.price} images={previewImage} rating={offers.rating} isPremium={offers.isPremium} title={offers.title} type={offers.type}/>
                   ))}
               </div>
             </section>

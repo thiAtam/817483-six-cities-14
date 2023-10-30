@@ -7,9 +7,24 @@ const LOCATIONS_OPTION: string[] = [
   'Top rated first',
 ];
 
+enum APP_ROUTE {
+  Login = '/login',
+  Favorites = '/favorites',
+  Offer = '/offer',
+  Root = '/'
+}
+
+enum AUTHORIZATION_STATUS {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN'
+}
+
 export {
   COUNT_OFFERS,
   LOCATIONS_NAME,
-  LOCATIONS_OPTION
+  LOCATIONS_OPTION,
+  APP_ROUTE,
+  AUTHORIZATION_STATUS
 };
 

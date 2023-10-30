@@ -1,6 +1,12 @@
 import HeaderPage from '../../components/header/header';
+import Location from '../../components/locations/locations-container';
 
-function EmptyMainPage(): JSX.Element {
+
+type EmptyMainProps = {
+  locationsName: string[];
+}
+
+function EmptyMainPage({locationsName}: EmptyMainProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <HeaderPage/>
@@ -9,36 +15,7 @@ function EmptyMainPage(): JSX.Element {
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
+              <Location locationsName={locationsName}/>
             </ul>
           </section>
         </div>

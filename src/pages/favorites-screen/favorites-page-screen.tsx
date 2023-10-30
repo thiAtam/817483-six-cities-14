@@ -1,6 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
+import { Link } from 'react-router-dom';
+import { APP_ROUTE } from '../../const';
 // import OfferCard from '../../components/offer-card/offer-card';
 
 
@@ -19,9 +21,9 @@ function FavoritesPage(): JSX.Element {
               <li className="favorites__locations-items">
                 <div className="favorites__locations locations locations--current">
                   <div className="locations__item">
-                    <a className="locations__item-link" href="#">
+                    <Link className="locations__item-link" to={APP_ROUTE.Root}>
                       <span>Amsterdam</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="favorites__places">
@@ -33,9 +35,9 @@ function FavoritesPage(): JSX.Element {
               <li className="favorites__locations-items">
                 <div className="favorites__locations locations locations--current">
                   <div className="locations__item">
-                    <a className="locations__item-link" href="#">
+                    <Link className="locations__item-link" to={APP_ROUTE.Root}>
                       <span>Cologne</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="favorites__places">

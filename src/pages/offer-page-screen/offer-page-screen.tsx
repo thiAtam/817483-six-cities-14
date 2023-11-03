@@ -106,7 +106,7 @@ function OfferPage({title, isPremium, images, price, rating, type, bedrooms, max
                   </p>
                 </div>
               </div>
-              <Form comment={comments.comment} date={comments.date} id={comments.id} rating={comments.rating} user={comments.user}/>
+              <Form comment={comments.comment} date={comments.date} id={comments.id} user={comments.user}/>
             </div>
           </div>
           <section className="offer__map map"></section>

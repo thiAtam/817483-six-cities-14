@@ -1,4 +1,5 @@
 const COUNT_OFFERS: number = 5;
+const COMMENTS_LENGTH = 50;
 const LOCATIONS_NAME: string[] = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 const LOCATIONS_OPTION: string[] = [
   'Popular',
@@ -25,6 +26,7 @@ export {
   LOCATIONS_NAME,
   LOCATIONS_OPTION,
   APP_ROUTE,
-  AUTHORIZATION_STATUS
+  AUTHORIZATION_STATUS,
+  COMMENTS_LENGTH
 };
 

@@ -1,31 +1,41 @@
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
-import { APP_ROUTE, AUTHORIZATION_STATUS } from '../../const';
-import MainPage from '../../pages/main-page';
-import FavoritesPage from '../../pages/favorites-screen/favorites-page-screen';
-import LoginPage from '../../pages/login-page-screen/login-page-screen';
-import OfferPage from '../../pages/offer-page-screen/offer-page-screen';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import { AppRoute, AuthorizationStatus } from '../../const';
+import {HelmetProvider} from 'react-helmet-async';
+import MainScreen from '../../pages/main-page/main-page';
+import LoginScreen from '../../pages/login-page-screen/login-page-screen';
+import FavoritesScreen from '../../pages/favorites-screen/favorites-page-screen';
+import OfferScreen from '../../pages/offer-page-screen/offer-page-screen';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
-import { HelmetProvider } from 'react-helmet-async';
-import offer from '../../mock-data/offers';
-import user from '../../mock-data/user';
+import { OffersCount, Cities } from '../../types/common';
+import { OffersType } from '../../types/offers';
 
 
-type ApplicationProps = {
-  countOffers: number;
-  locationsName: string[];
-  locationsOption: string[];
+type AppScreenProps = {
+  offersCount: OffersCount;
+  cities: Cities;
+  offers: OffersType[];
+  favorites: OffersType[];
+  offersNearby: OffersType[];
 }
 
-function App({countOffers, locationsName, locationsOption}: ApplicationProps): JSX.Element {
+function App({offersCount, cities, offers, favorites, offersNearby}: AppScreenProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
-          <Route path={APP_ROUTE.Root} element={<MainPage countOffers={countOffers} locationsName={locationsName} locationsOption={locationsOption} previewImage={offer.previewImage}/>}/>
-          <Route path={APP_ROUTE.Login} element={<LoginPage email={user.email}/>} />
-          <Route path={APP_ROUTE.Favorites} element={<PrivateRoute authorizationStatus={AUTHORIZATION_STATUS.NoAuth}><FavoritesPage /></PrivateRoute>}/>
-          <Route path={`${APP_ROUTE.Offer}/:id`} element={<OfferPage previewImage={offer.previewImage} images={offer.images} price={offer.price} rating={offer.rating} type={offer.type} isPremium={offer.isPremium} title={offer.title} bedrooms={offer.bedrooms} maxAdults={offer.maxAdults} goods={offer.goods} host={offer.host}/>} />
+          <Route path={AppRoute.Main} element={<MainScreen offersCount={offersCount} cities={cities} offers={offers} />} />
+          <Route path={AppRoute.Login} element={<LoginScreen />} />
+          <Route path={AppRoute.Favorites} element={
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth} >
+              <FavoritesScreen favorites={favorites}/>
+            </PrivateRoute>
+          }
+          />
+          <Route path={`${AppRoute.Offer}/:id`} element={
+            <OfferScreen offersNearby={offersNearby}/>
+          }
+          />
           <Route path='*' element={<NotFoundScreen />} />
         </Routes>
       </BrowserRouter>

@@ -1,84 +1,60 @@
 import React, { ChangeEvent, useState } from 'react';
-import { COMMENTS_LENGTH } from '../../const';
+import { MIN_COMMENT_LENGTH } from '../../const';
 
-type CommentsType = {
-  id?: number;
-  user: {
-    id: number;
-    isPro: boolean;
-    name: string;
-    avatarUrl: string;
-  };
-  comment: string;
-  date: string;
-}
+function ReviewForm(): JSX.Element {
+  const [comment, setComment] = useState<string>('');
+  const [rating, setRating] = useState<number | string>('');
+  const isValid = comment.length >= MIN_COMMENT_LENGTH && rating !== '';
 
-function Form({comment, date, user}: CommentsType): JSX.Element {
-
-  const [comments, setComment] = useState<string>('');
-  const [rate, setRating] = useState<string | number>('');
-  const isValid = comments.length >= COMMENTS_LENGTH && rate !== '';
-  const ratingValue = ['5', '4', '3', '2', '1'];
-
-  function onCommentChange(event: ChangeEvent<HTMLTextAreaElement>) {
-    return setComment(event.target.value);
+  function handleCommentChange(evt: ChangeEvent<HTMLTextAreaElement>) {
+    setComment(evt.target.value);
   }
 
-  function onRatingChange(event: ChangeEvent<HTMLInputElement>) {
-    return setRating(event.target.value);
+  function handleRatingChange(evt: ChangeEvent<HTMLInputElement>) {
+    setRating(evt.target.value);
   }
 
   return (
-    <section className="offer__reviews reviews">
-      <h2 className="reviews__title">Reviews · <span className="reviews__amount">{user.id}</span></h2>
-      <ul className="reviews__list">
-        <li className="reviews__item">
-          <div className="reviews__user user">
-            <div className="reviews__avatar-wrapper user__avatar-wrapper">
-              <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width="54" height="54" alt="Reviews avatar"/>
-            </div>
-            <span className="reviews__user-name">
-              {user.name}
-            </span>
-          </div>
-          <div className="reviews__info">
-            <div className="reviews__rating rating">
-              <div className="reviews__stars rating__stars">
-                <span style={{width: `${Number(rate) * 20}%`}}></span>
-                <span className="visually-hidden">Rating</span>
-              </div>
-            </div>
-            <p className="reviews__text">
-              {comment}
-            </p>
-            <time className="reviews__time" dateTime="2019-04-24">{date}</time>
-          </div>
-        </li>
-      </ul>
-      <form className="reviews__form form" action="#" method="post">
-        <label className="reviews__label form__label" htmlFor="review">Your review</label>
-        <div className="reviews__rating-form form__rating">
-          {ratingValue.map((value) => (
-            <React.Fragment key={value}>
-              <input className="form__rating-input visually-hidden" name="rating" value={value} id={`${value}-stars`} onChange={onRatingChange} type="radio" checked={rate === value}/>
-              <label htmlFor={`${value}-stars`} className="reviews__rating-label form__rating-label" title="perfect">
-                <svg className="form__star-image" width="37" height="33">
-                  <use xlinkHref="#icon-star"></use>
-                </svg>
-              </label>
-            </React.Fragment>
-          ))}
-        </div>
-        <textarea className="reviews__textarea form__textarea" value={comments} onChange={onCommentChange} id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved"></textarea>
-        <div className="reviews__button-wrapper">
-          <p className="reviews__help">
-            To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
-          </p>
-          <button className="reviews__submit form__submit button" type="submit" disabled={isValid}>Submit</button>
-        </div>
-      </form>
-    </section>
+    <form className="reviews__form form" action="#" method="post">
+      <label className="reviews__label form__label" htmlFor="review">Your review</label>
+      <div className="reviews__rating-form form__rating">
+        {['5', '4', '3', '2', '1'].map((value) => (
+          <React.Fragment key={value}>
+            <input
+              className="form__rating-input visually-hidden"
+              name="rating"
+              value={value}
+              id={`${value}-stars`}
+              type="radio"
+              onChange={handleRatingChange}
+              checked={rating === value}
+            />
+            <label htmlFor={`${value}-stars`} className="reviews__rating-label form__rating-label" title="rating title">
+              <svg className="form__star-image" width="37" height="33">
+                <use xlinkHref="#icon-star"></use>
+              </svg>
+            </label>
+          </React.Fragment>
+        ))}
+      </div>
+      <textarea
+        className="reviews__textarea form__textarea"
+        value={comment}
+        onChange={handleCommentChange}
+        id="review"
+        name="review"
+        placeholder='Tell how was your stay, what you like and what can be improved'
+      />
+      <div className="reviews__button-wrapper">
+        <p className="reviews__help">
+          To submit a review, please make sure to set a rating and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
+        </p>
+        <button className="reviews__submit form__submit button" type="submit" disabled={!isValid}>
+          Submit
+        </button>
+      </div>
+    </form>
   );
 }
 
-export default Form;
+export default ReviewForm;

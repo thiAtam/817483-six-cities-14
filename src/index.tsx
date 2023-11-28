@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import {COUNT_OFFERS, LOCATIONS_NAME, LOCATIONS_OPTION} from './const';
-
+import { Setting } from './const';
+import { cities } from './mocks/location';
+import { offersData } from './mocks/offers';
+import { favoritesData } from './mocks/favorites';
+import { offersNearbyData } from './mocks/offers';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,9 +14,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <App
-      countOffers={COUNT_OFFERS}
-      locationsName={LOCATIONS_NAME}
-      locationsOption={LOCATIONS_OPTION}
+      offersCount={Setting.OffersCount}
+      cities={cities}
+      offers={offersData}
+      favorites={favoritesData}
+      offersNearby={offersNearbyData}
     />
-  </React.StrictMode>
+  </React.StrictMode>,
 );

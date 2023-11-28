@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
-import offer from '../../mock-data/offers';
-import OfferCard from '../../components/offer-card/offer-card';
+import offer from '../../mocks/offers';
+import OfferCard from '../../components/offers/offer-card/offer-card';
 
 type OfferPageProp = {
   // images: string[];

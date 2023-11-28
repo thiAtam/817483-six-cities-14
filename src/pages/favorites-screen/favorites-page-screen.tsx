@@ -1,18 +1,22 @@
-import { Helmet } from 'react-helmet-async';
-import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
-import { Link } from 'react-router-dom';
-import { APP_ROUTE } from '../../const';
-// import OfferCard from '../../components/offer-card/offer-card';
+import Footer from '../../components/footer/footer';
+import {Helmet} from 'react-helmet-async';
+import { OffersType } from '../../types/offers';
+import ListOffers from '../../components/offers/list-offers/list-offers';
 
+type FavoritesProps = {
+  favorites: OffersType[];
+}
 
-function FavoritesPage(): JSX.Element {
+function FavoritesScreen({favorites}: FavoritesProps): JSX.Element {
   return (
     <div className="page">
       <Helmet>
-        <title>6 cities. Favorites!</title>
+        <title>6 cities. Favorites offers</title>
       </Helmet>
-      <Header/>
+
+      <Header />
+
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
           <section className="favorites">
@@ -21,35 +25,35 @@ function FavoritesPage(): JSX.Element {
               <li className="favorites__locations-items">
                 <div className="favorites__locations locations locations--current">
                   <div className="locations__item">
-                    <Link className="locations__item-link" to={APP_ROUTE.Root}>
+                    <a className="locations__item-link" href="#">
                       <span>Amsterdam</span>
-                    </Link>
+                    </a>
                   </div>
                 </div>
                 <div className="favorites__places">
-                  {/* <OfferCard/> */}
-                  {/* <OfferCard/> */}
+                  <ListOffers offers={favorites} />
                 </div>
               </li>
 
               <li className="favorites__locations-items">
                 <div className="favorites__locations locations locations--current">
                   <div className="locations__item">
-                    <Link className="locations__item-link" to={APP_ROUTE.Root}>
+                    <a className="locations__item-link" href="#">
                       <span>Cologne</span>
-                    </Link>
+                    </a>
                   </div>
                 </div>
                 <div className="favorites__places">
+                  <ListOffers offers={favorites} />
                 </div>
               </li>
             </ul>
           </section>
         </div>
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
 
-export default FavoritesPage;
+export default FavoritesScreen;

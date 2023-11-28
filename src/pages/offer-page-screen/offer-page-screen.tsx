@@ -1,51 +1,52 @@
-import { Helmet } from 'react-helmet-async';
+import ImageOffer from '../../components/offers/image-offer/image-offer';
+import InsideOffers from '../../components/offers/inside-offer/inside-offer';
 import Header from '../../components/header/header';
-import offer from '../../mock-data/offers';
-import OfferCard from '../../components/offer-card/offer-card';
+import ReviewForm from '../../components/review/review';
+import { useParams } from 'react-router-dom';
+import { offersData } from '../../mocks/offers';
+import ListOffers from '../../components/offers/list-offers/list-offers';
+import { OffersType } from '../../types/offers';
+import { Navigate } from 'react-router-dom';
 
-type OfferPageProp = {
-  images: string[];
-  price: number;
-  rating: number;
-  isPremium: boolean;
-  title: string;
-  type: string;
-  bedrooms: number;
-  maxAdults: number;
-  goods: string[];
-  host: {
-    avatarUrl: string;
-    id: number;
-    isPro: boolean;
-    name: string;
-  };
-  previewImage: string;
+type OffersProps = {
+  offersNearby: OffersType[];
 }
 
-function OfferPage({title, isPremium, images, price, rating, type, bedrooms, maxAdults, goods, host, previewImage}: OfferPageProp): JSX.Element {
-  const ratingPercent: number = (rating / 6) * 100;
+function OfferScreen({offersNearby}: OffersProps): JSX.Element {
+  const { id } = useParams();
+  let dataIndex = 0;
+
+  if (id) {
+    const parsedIndex = parseInt(id, 10);
+
+    if (parsedIndex < offersData.length) {
+      dataIndex = parsedIndex;
+    } else {
+      return <Navigate to="not-found-screen" />;
+    }
+  }
+  const data = offersData[dataIndex];
+
+  const ratingPercentage: number = (data.rating / 6) * 100;
 
   return (
-    <div className="page">
-      <Helmet>
-        <title>6 cities. Your Place!</title>
-      </Helmet>
-      <Header/>
+    <div className='page'>
+      <Header />
       <main className="page__main page__main--offer">
         <section className="offer">
           <div className="offer__gallery-container container">
             <div className="offer__gallery">
-              {images.map((image) => <div key={image} className="offer__image-wrapper"><img className="offer__image" src={image} alt="Photo studio"/></div>)}
+              {data.images.map((item) => <ImageOffer src={item} key={id} />)}
             </div>
           </div>
           <div className="offer__container container">
             <div className="offer__wrapper">
               <div className="offer__mark">
-                <span>{isPremium ? 'Premium' : ''}</span>
+                <span>{data.isPremium ? 'Premium' : ''}</span>
               </div>
               <div className="offer__name-wrapper">
                 <h1 className="offer__name">
-                  {title}
+                  {data.title}
                 </h1>
                 <button className="offer__bookmark-button button" type="button">
                   <svg className="offer__bookmark-icon" width="31" height="33">
@@ -56,70 +57,77 @@ function OfferPage({title, isPremium, images, price, rating, type, bedrooms, max
               </div>
               <div className="offer__rating rating">
                 <div className="offer__stars rating__stars">
-                  <span style={{ width: `${ratingPercent}%`}}></span>
+                  <span style={{ width: `${ratingPercentage}%` }}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="offer__rating-value rating__value">{rating}</span>
+                <span className="offer__rating-value rating__value">{data.rating}</span>
               </div>
               <ul className="offer__features">
                 <li className="offer__feature offer__feature--entire">
-                  {type}
+                  {data.type.charAt(0).toUpperCase() + data.type.slice(1)}
                 </li>
                 <li className="offer__feature offer__feature--bedrooms">
-                  {bedrooms} Bedrooms
+                  {data.bedrooms} Bedrooms
                 </li>
                 <li className="offer__feature offer__feature--adults">
-                  Max {maxAdults} adults
+                  Max {data.maxAdults} adults
                 </li>
               </ul>
               <div className="offer__price">
-                <b className="offer__price-value">&euro;{price}</b>
+                <b className="offer__price-value">&euro;{data.price}</b>
                 <span className="offer__price-text">&nbsp;night</span>
               </div>
               <div className="offer__inside">
                 <h2 className="offer__inside-title">What&apos;s inside</h2>
                 <ul className="offer__inside-list">
-                  {goods.map((good) => <li key={good} className="offer__inside-item">{good}</li>)}
+                  {data.goods.map((item) => <InsideOffers insideOffer={item} key={id}/>)}
                 </ul>
               </div>
               <div className="offer__host">
                 <h2 className="offer__host-title">Meet the host</h2>
                 <div className="offer__host-user user">
                   <div className="offer__avatar-wrapper offer__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="offer__avatar user__avatar" src={host.avatarUrl} width="74" height="74" alt="Host avatar"/>
+                    <img
+                      className="offer__avatar user__avatar"
+                      src={data.host.avatarUrl}
+                      width="74"
+                      height="74"
+                      alt="Host avatar"
+                    />
                   </div>
                   <span className="offer__user-name">
-                    {host.name}
+                    {data.host.name}
                   </span>
                   <span className="offer__user-status">
-                    {host.isPro ? 'Pro' : ''}
+                    {data.host.isPro}
                   </span>
                 </div>
                 <div className="offer__description">
                   <p className="offer__text">
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                  </p>
-                  <p className="offer__text">
-                    An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.
+                    {data.description}
                   </p>
                 </div>
               </div>
               <section className="offer__reviews reviews">
-                <h2 className="reviews__title">Reviews · <span className="reviews__amount">1</span></h2>
+                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
                 <ul className="reviews__list">
                   <li className="reviews__item">
                     <div className="reviews__user user">
                       <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                        <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width="54" height="54" alt="Reviews avatar"/>
+                        <img
+                          className="reviews__avatar user__avatar"
+                          src="img/avatar-max.jpg"
+                          width="54" height="54" alt="Reviews avatar"
+                        />
                       </div>
                       <span className="reviews__user-name">
-                        Max
+                          Max
                       </span>
                     </div>
                     <div className="reviews__info">
                       <div className="reviews__rating rating">
                         <div className="reviews__stars rating__stars">
-                          <span style={{width: '80%'}}></span>
+                          <span style={{ width: `${ratingPercentage}%` }}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -130,52 +138,7 @@ function OfferPage({title, isPremium, images, price, rating, type, bedrooms, max
                     </div>
                   </li>
                 </ul>
-                <form className="reviews__form form" action="#" method="post">
-                  <label className="reviews__label form__label" htmlFor="review">Your review</label>
-                  <div className="reviews__rating-form form__rating">
-                    <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio"/>
-                    <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input className="form__rating-input visually-hidden" name="rating" value="4" id="4-stars" type="radio"/>
-                    <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input className="form__rating-input visually-hidden" name="rating" value="3" id="3-stars" type="radio"/>
-                    <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input className="form__rating-input visually-hidden" name="rating" value="2" id="2-stars" type="radio"/>
-                    <label htmlFor="2-stars" className="reviews__rating-label form__rating-label" title="badly">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input className="form__rating-input visually-hidden" name="rating" value="1" id="1-star" type="radio"/>
-                    <label htmlFor="1-star" className="reviews__rating-label form__rating-label" title="terribly">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
-                  </div>
-                  <textarea className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved"></textarea>
-                  <div className="reviews__button-wrapper">
-                    <p className="reviews__help">
-                      To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
-                    </p>
-                    <button className="reviews__submit form__submit button" type="submit" disabled>Submit</button>
-                  </div>
-                </form>
+                <ReviewForm />
               </section>
             </div>
           </div>
@@ -185,9 +148,7 @@ function OfferPage({title, isPremium, images, price, rating, type, bedrooms, max
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              {Array.from({length: 3}, (_: string, count: number) =>
-                (<OfferCard key={count} price={offer.price} images={previewImage} rating={offer.rating} isPremium={offer.isPremium} title={offer.title} type={offer.type}/>
-                ))}
+              <ListOffers offers={offersNearby} />
             </div>
           </section>
         </div>
@@ -196,4 +157,4 @@ function OfferPage({title, isPremium, images, price, rating, type, bedrooms, max
   );
 }
 
-export default OfferPage;
+export default OfferScreen;

@@ -2,14 +2,14 @@ export const Setting = {
   OffersCount: 5
 };
 
-export enum AppRoute {
+ enum AppRoute {
   Main = '/',
   Login = '/login',
   Favorites = '/favorites',
   Offer = '/offers'
 }
 
-export enum AuthorizationStatus {
+enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
@@ -66,11 +66,21 @@ export const CityMapData = {
   },
 };
 
+const TILE_LAYER =
+'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+const COPYRIGHT =
+'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
-export const MIN_COMMENT_LENGTH = 50;
-export const MAX_COMMENT_LENGTH = 300;
+const MAX_REVIEWS_COUNT = 10;
+const MIN_COMMENT_LENGTH = 50;
+const MAX_COMMENT_LENGTH = 300;
 
-export const TILE_LAYER =
-  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-export const COPYRIGHT =
-  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+export {
+  AppRoute,
+  AuthorizationStatus,
+  MAX_REVIEWS_COUNT,
+  MIN_COMMENT_LENGTH,
+  MAX_COMMENT_LENGTH,
+  TILE_LAYER,
+  COPYRIGHT
+};

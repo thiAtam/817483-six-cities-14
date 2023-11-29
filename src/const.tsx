@@ -15,6 +15,15 @@ enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
+enum NameSpace {
+  Offers = 'OFFERS',
+  Offer = 'OFFER',
+  NearPlaces = 'NEAR_PLACES',
+  Favorites = 'FAVORITES',
+  Reviews = 'REVIEWS',
+  User = 'USER',
+}
+
 export const CityMapData = {
   Amsterdam : {
     name: 'Amsterdam',
@@ -78,6 +87,7 @@ const MAX_COMMENT_LENGTH = 300;
 export {
   AppRoute,
   AuthorizationStatus,
+  NameSpace,
   MAX_REVIEWS_COUNT,
   MIN_COMMENT_LENGTH,
   MAX_COMMENT_LENGTH,

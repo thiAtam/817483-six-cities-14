@@ -1,4 +1,4 @@
-import ReviewForm from './review-form';
+import ReviewForm from './review';
 import ReviewItem from './review-item';
 import { reviewsData } from '../../mocks/reviews';
 import { MAX_REVIEWS_COUNT } from '../../const';

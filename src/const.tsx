@@ -15,6 +15,15 @@ enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
+enum NameSpace {
+  Offers = 'OFFERS',
+  Offer = 'OFFER',
+  NearPlaces = 'NEAR_PLACES',
+  Favorites = 'FAVORITES',
+  Reviews = 'REVIEWS',
+  User = 'USER',
+}
+
 export const CityMapData = {
   Amsterdam : {
     name: 'Amsterdam',
@@ -74,13 +83,16 @@ const COPYRIGHT =
 const MAX_REVIEWS_COUNT = 10;
 const MIN_COMMENT_LENGTH = 50;
 const MAX_COMMENT_LENGTH = 300;
+const MAX_NEAR_PLACES_COUNT = 3;
 
 export {
   AppRoute,
   AuthorizationStatus,
+  NameSpace,
   MAX_REVIEWS_COUNT,
   MIN_COMMENT_LENGTH,
   MAX_COMMENT_LENGTH,
   TILE_LAYER,
-  COPYRIGHT
+  COPYRIGHT,
+  MAX_NEAR_PLACES_COUNT
 };

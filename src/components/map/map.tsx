@@ -19,7 +19,7 @@ type MapPropsType = {
   block: string;
   location: LocationType;
   offers: OffersType[];
-  specialOfferId: number | null;
+  specialOfferId: string | null;
 }
 
 const defaultIconConfig: IconConfigType = {
@@ -81,7 +81,19 @@ function Map({block, location, offers, specialOfferId}: MapPropsType) {
     }
   }, [map, offers, specialOfferId]);
 
-  return <section className={`${block}__map map`} ref={mapRef} />;
+  return (
+    <section
+      className={`${block}__map map`}
+      ref={mapRef}
+      style={{
+        height: '100%',
+        minHeight: '500px',
+        width: '100%',
+        maxWidth: '1144px',
+        margin: '0 auto',
+      }}
+    />
+  );
 }
 
 export default Map;

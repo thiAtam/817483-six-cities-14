@@ -1,6 +1,17 @@
+import { createBrowserHistory } from "history";
+
 export const Setting = {
   OffersCount: 5
 };
+
+enum APIRoute {
+  Offers = '/offers',
+  Login = '/login',
+  Logout = '/logout',
+  Reviews = '/comments/',
+  NearPlaces = '/nearby',
+  Favorites = '/favorite'
+}
 
  enum AppRoute {
   Main = '/',
@@ -85,10 +96,14 @@ const MIN_COMMENT_LENGTH = 50;
 const MAX_COMMENT_LENGTH = 300;
 const MAX_NEAR_PLACES_COUNT = 3;
 
+const browserHistory = createBrowserHistory();
+
 export {
   AppRoute,
   AuthorizationStatus,
   NameSpace,
+  APIRoute,
+  browserHistory,
   MAX_REVIEWS_COUNT,
   MIN_COMMENT_LENGTH,
   MAX_COMMENT_LENGTH,
